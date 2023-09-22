@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CategoryCard extends StatelessWidget {
+class CategoryItem extends StatelessWidget {
   final String name;
 
-  const CategoryCard({
+  const CategoryItem({
     Key? key,
     required this.name,
   }) : super(key: key);

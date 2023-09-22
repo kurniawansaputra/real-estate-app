@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate_app/models/real_estate.dart';
-import 'package:real_estate_app/widgets/category_card.dart';
-import 'package:real_estate_app/widgets/nearby_card.dart';
-import 'package:real_estate_app/widgets/recommended_card.dart';
+
+import '../models/real_estate.dart';
+import '../widgets/category_item.dart';
+import '../widgets/nearby_item.dart';
+import '../widgets/recommended_item.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -133,7 +134,7 @@ class HomePage extends StatelessWidget {
                     Text(
                       'Recomended',
                       style: TextStyle(
-                        fontSize: 18.0,
+                        fontSize: 20.0,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -160,7 +161,7 @@ class HomePage extends StatelessWidget {
                         left: index == 0 ? 16 : 0.0,
                         right: 16.0,
                       ),
-                      child: RecommendedCard(realEstate),
+                      child: RecommendedItem(realEstate),
                     );
                   },
                   scrollDirection: Axis.horizontal,
@@ -179,7 +180,7 @@ class HomePage extends StatelessWidget {
                     Text(
                       'Nearby Your Location',
                       style: TextStyle(
-                        fontSize: 18.0,
+                        fontSize: 20.0,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -195,17 +196,29 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 16.0,
               ),
-              ListView.builder(
-                physics: const ScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: nearbyList.length,
-                itemBuilder: (context, index) {
-                  final RealEstate realEstate = nearbyList[index];
-                  return NearbyCard(realEstate);
-                },
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                ),
+                child: ListView.builder(
+                  physics: const ScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: nearbyList.length,
+                  itemBuilder: (context, index) {
+                    final RealEstate realEstate = nearbyList[index];
+                    return Container(
+                      margin: EdgeInsets.only(
+                        top: index == 0 ? 0.0 : 16.0,
+                      ),
+                      child: NearbyItem(
+                        realEstate,
+                      ),
+                    );
+                  },
+                ),
               ),
               const SizedBox(
-                height: 8.0,
+                height: 24.0,
               ),
             ],
           ),
@@ -219,12 +232,12 @@ class HomePage extends StatelessWidget {
       runSpacing: 8.0,
       spacing: 8.0,
       children: [
-        CategoryCard(name: 'House'),
-        CategoryCard(name: 'Apartment'),
-        CategoryCard(name: 'Townhouse'),
-        CategoryCard(name: 'Cottage'),
-        CategoryCard(name: 'Mansion'),
-        CategoryCard(name: 'Condo'),
+        CategoryItem(name: 'House'),
+        CategoryItem(name: 'Apartment'),
+        CategoryItem(name: 'Townhouse'),
+        CategoryItem(name: 'Cottage'),
+        CategoryItem(name: 'Mansion'),
+        CategoryItem(name: 'Condo'),
       ],
     );
   }

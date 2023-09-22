@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate_app/pages/home_page.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+import 'home_page.dart';
+
+class MainNavigation extends StatefulWidget {
+  const MainNavigation({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<MainNavigation> createState() => _MainNavigationState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainNavigationState extends State<MainNavigation> {
   int _selectedIndex = 0;
 
   static const List _pages = [
