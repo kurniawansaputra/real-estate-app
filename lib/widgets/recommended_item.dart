@@ -3,6 +3,7 @@ import 'package:real_estate_app/models/real_estate.dart';
 
 import '../pages/detail_page.dart';
 import 'favorite_button.dart';
+import 'model_item.dart';
 
 class RecommendedItem extends StatelessWidget {
   final RealEstate realEstate;
@@ -134,80 +135,19 @@ class RecommendedItem extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(
-                          width: 16.0,
-                        ),
-                        Row(
-                          children: [
-                            Image(
-                              image: const AssetImage(
-                                'assets/icons/ic_bed.png',
-                              ),
-                              width: 14.0,
-                              height: 14.0,
-                              color: Colors.grey.shade600,
-                            ),
-                            const SizedBox(
-                              width: 4.0,
-                            ),
-                            Text(
-                              realEstate.bedRoom.toStringAsFixed(0),
-                              style: const TextStyle(
-                                fontSize: 12.0,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
                           width: 8.0,
                         ),
-                        Row(
-                          children: [
-                            Image(
-                              image: const AssetImage(
-                                'assets/icons/ic_bath.png',
-                              ),
-                              width: 14.0,
-                              height: 14.0,
-                              color: Colors.grey.shade600,
-                            ),
-                            const SizedBox(
-                              width: 4.0,
-                            ),
-                            Text(
-                              realEstate.bathRoom.toStringAsFixed(0),
-                              style: const TextStyle(
-                                fontSize: 12.0,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
+                        ModelItem(
+                          assetImage: 'assets/icons/ic_bed.png',
+                          name: realEstate.bedRoom.toStringAsFixed(0),
                         ),
-                        const SizedBox(
-                          width: 8.0,
+                        ModelItem(
+                          assetImage: 'assets/icons/ic_bath.png',
+                          name: realEstate.bathRoom.toStringAsFixed(0),
                         ),
-                        Row(
-                          children: [
-                            Image(
-                              image: const AssetImage(
-                                'assets/icons/ic_type.png',
-                              ),
-                              width: 14.0,
-                              height: 14.0,
-                              color: Colors.grey.shade600,
-                            ),
-                            const SizedBox(
-                              width: 4.0,
-                            ),
-                            Text(
-                              realEstate.category,
-                              style: const TextStyle(
-                                fontSize: 12.0,
-                                color: Colors.grey,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
+                        ModelItem(
+                          assetImage: 'assets/icons/ic_category.png',
+                          name: realEstate.category,
                         ),
                       ],
                     ),

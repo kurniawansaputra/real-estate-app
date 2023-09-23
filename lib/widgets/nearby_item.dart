@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/real_estate.dart';
 import '../pages/detail_page.dart';
+import 'model_item.dart';
 
 class NearbyItem extends StatelessWidget {
   final RealEstate realEstate;
@@ -145,80 +146,17 @@ class NearbyItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Image(
-                              image: const AssetImage(
-                                'assets/icons/ic_bed.png',
-                              ),
-                              width: 14.0,
-                              height: 14.0,
-                              color: Colors.grey.shade600,
-                            ),
-                            const SizedBox(
-                              width: 4.0,
-                            ),
-                            Text(
-                              realEstate.bedRoom.toStringAsFixed(0),
-                              style: const TextStyle(
-                                fontSize: 12.0,
-                                color: Colors.grey,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
+                        ModelItem(
+                          assetImage: 'assets/icons/ic_bed.png',
+                          name: realEstate.bedRoom.toStringAsFixed(0),
                         ),
-                        const SizedBox(
-                          width: 16.0,
+                        ModelItem(
+                          assetImage: 'assets/icons/ic_bath.png',
+                          name: realEstate.bathRoom.toStringAsFixed(0),
                         ),
-                        Row(
-                          children: [
-                            Image(
-                              image: const AssetImage(
-                                'assets/icons/ic_bath.png',
-                              ),
-                              width: 14.0,
-                              height: 14.0,
-                              color: Colors.grey.shade600,
-                            ),
-                            const SizedBox(
-                              width: 4.0,
-                            ),
-                            Text(
-                              realEstate.bathRoom.toStringAsFixed(0),
-                              style: const TextStyle(
-                                fontSize: 12.0,
-                                color: Colors.grey,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 16.0,
-                        ),
-                        Row(
-                          children: [
-                            Image(
-                              image: const AssetImage(
-                                'assets/icons/ic_type.png',
-                              ),
-                              width: 14.0,
-                              height: 14.0,
-                              color: Colors.grey.shade600,
-                            ),
-                            const SizedBox(
-                              width: 4.0,
-                            ),
-                            Text(
-                              realEstate.category,
-                              style: const TextStyle(
-                                fontSize: 12.0,
-                                color: Colors.grey,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
+                        ModelItem(
+                          assetImage: 'assets/icons/ic_category.png',
+                          name: realEstate.category,
                         ),
                       ],
                     )

@@ -1,10 +1,9 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import '../models/real_estate.dart';
 import '../widgets/facility_item.dart';
 import '../widgets/favorite_button.dart';
+import '../widgets/model_item.dart';
 
 class DetailPage extends StatelessWidget {
   final RealEstate realEstate;
@@ -130,80 +129,19 @@ class DetailPage extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Row(
-                                children: [
-                                  Image(
-                                    image: const AssetImage(
-                                      'assets/icons/ic_bed.png',
-                                    ),
-                                    width: 14.0,
-                                    height: 14.0,
-                                    color: Colors.grey.shade600,
-                                  ),
-                                  const SizedBox(
-                                    width: 4.0,
-                                  ),
-                                  Text(
+                              ModelItem(
+                                assetImage: 'assets/icons/ic_bed.png',
+                                name:
                                     '${realEstate.bedRoom.toStringAsFixed(0)} Beds',
-                                    style: const TextStyle(
-                                      fontSize: 12.0,
-                                      color: Colors.grey,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                ],
                               ),
-                              const SizedBox(
-                                width: 32.0,
-                              ),
-                              Row(
-                                children: [
-                                  Image(
-                                    image: const AssetImage(
-                                      'assets/icons/ic_bath.png',
-                                    ),
-                                    width: 14.0,
-                                    height: 14.0,
-                                    color: Colors.grey.shade600,
-                                  ),
-                                  const SizedBox(
-                                    width: 4.0,
-                                  ),
-                                  Text(
+                              ModelItem(
+                                assetImage: 'assets/icons/ic_bath.png',
+                                name:
                                     '${realEstate.bathRoom.toStringAsFixed(0)} Baths',
-                                    style: const TextStyle(
-                                      fontSize: 12.0,
-                                      color: Colors.grey,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                ],
                               ),
-                              const SizedBox(
-                                width: 32.0,
-                              ),
-                              Row(
-                                children: [
-                                  Image(
-                                    image: const AssetImage(
-                                      'assets/icons/ic_type.png',
-                                    ),
-                                    width: 14.0,
-                                    height: 14.0,
-                                    color: Colors.grey.shade600,
-                                  ),
-                                  const SizedBox(
-                                    width: 4.0,
-                                  ),
-                                  Text(
-                                    realEstate.category,
-                                    style: const TextStyle(
-                                      fontSize: 12.0,
-                                      color: Colors.grey,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                ],
+                              ModelItem(
+                                assetImage: 'assets/icons/ic_category.png',
+                                name: realEstate.category,
                               ),
                             ],
                           ),
@@ -341,49 +279,26 @@ class DetailPage extends StatelessWidget {
                         ),
                         SizedBox(
                           height: 120.0,
-                          child: ListView(
+                          child: ListView.builder(
                             scrollDirection: Axis.horizontal,
-                            children: [
-                              const SizedBox(
-                                width: 16.0,
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(16),
-                                child: Image.network(
-                                  'https://picsum.photos/id/${Random().nextInt(25)}/200/300',
-                                  fit: BoxFit.cover,
-                                  width: 170.0,
-                                  height: 70.0,
+                            itemCount: realEstate.imageUrls.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding: EdgeInsets.only(
+                                  left: index == 0 ? 16.0 : 0.0,
+                                  right: 16.0,
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 16.0,
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.network(
-                                  'https://picsum.photos/id/${Random().nextInt(25)}/200/300',
-                                  fit: BoxFit.cover,
-                                  width: 170.0,
-                                  height: 70.0,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(16),
+                                  child: Image.network(
+                                    realEstate.imageUrls[index],
+                                    fit: BoxFit.cover,
+                                    width: 170.0,
+                                    height: 70.0,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 16.0,
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.network(
-                                  'https://picsum.photos/id/${Random().nextInt(25)}/200/300',
-                                  fit: BoxFit.cover,
-                                  width: 170.0,
-                                  height: 70.0,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 16.0,
-                              ),
-                            ],
+                              );
+                            },
                           ),
                         ),
                         const SizedBox(

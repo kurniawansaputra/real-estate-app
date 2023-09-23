@@ -31,54 +31,10 @@ class _MainNavigationState extends State<MainNavigation> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
         items: [
-          BottomNavigationBarItem(
-            icon: Container(
-              width: 20,
-              height: 20,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/icons/ic_home.png'),
-                ),
-              ),
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Container(
-              width: 20,
-              height: 20,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/icons/ic_favorite.png'),
-                ),
-              ),
-            ),
-            label: 'Favorite',
-          ),
-          BottomNavigationBarItem(
-            icon: Container(
-              width: 20,
-              height: 20,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/icons/ic_chat.png'),
-                ),
-              ),
-            ),
-            label: 'Chats',
-          ),
-          BottomNavigationBarItem(
-            icon: Container(
-              width: 20,
-              height: 20,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/icons/ic_profile.png'),
-                ),
-              ),
-            ),
-            label: 'Profile',
-          ),
+          bottomNavBarItem('Home', 'assets/icons/ic_home.png'),
+          bottomNavBarItem('Favorite', 'assets/icons/ic_favorite.png'),
+          bottomNavBarItem('Chat', 'assets/icons/ic_chat.png'),
+          bottomNavBarItem('Profile', 'assets/icons/ic_profile.png'),
         ],
         type: BottomNavigationBarType.fixed,
         elevation: 0,
@@ -89,6 +45,21 @@ class _MainNavigationState extends State<MainNavigation> {
         onTap: _onItemTapped,
       ),
       body: _pages[_selectedIndex],
+    );
+  }
+
+  BottomNavigationBarItem bottomNavBarItem(String label, String iconAsset) {
+    return BottomNavigationBarItem(
+      icon: Container(
+        width: 20,
+        height: 20,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(iconAsset),
+          ),
+        ),
+      ),
+      label: label,
     );
   }
 }
