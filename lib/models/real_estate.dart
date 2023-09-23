@@ -1,17 +1,17 @@
 import 'dart:math';
 
 class RealEstate {
-  String imageUrl;
-  String name;
-  String address;
-  double price;
-  int bedRoom;
-  int bathRoom;
-  String category;
-  String description;
+  final String imageUrl;
+  final String name;
+  final String address;
+  final double price;
+  final int bedRoom;
+  final int bathRoom;
+  final String category;
+  final String description;
   bool isFavorite;
-  double rate;
-  List imageUrls;
+  final double rate;
+  final List imageUrls;
 
   RealEstate({
     required this.imageUrl,
